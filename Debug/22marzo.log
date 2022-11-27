@@ -1,0 +1,17 @@
+﻿  Final.cpp
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(409,42): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(649,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(650,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(654,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(655,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(657,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(658,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\CGLIHC03\source\repos\22marzo\22marzo\Final.cpp(666,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  22marzo.vcxproj -> C:\Users\CGLIHC03\source\repos\22marzo\Debug\22marzo.exe

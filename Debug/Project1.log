@@ -1,0 +1,8 @@
+﻿  main_prac06.cpp
+c:\users\cglihc03\source\repos\project1\project1\main_prac06.cpp(390): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\cglihc03\source\repos\project1\project1\main_prac06.cpp(391): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\cglihc03\source\repos\project1\project1\main_prac06.cpp(398): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\cglihc03\source\repos\project1\project1\main_prac06.cpp(399): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\cglihc03\source\repos\project1\project1\main_prac06.cpp(401): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cglihc03\source\repos\project1\project1\main_prac06.cpp(408): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  Project1.vcxproj -> C:\Users\CGLIHC03\source\repos\Project1\Debug\Project1.exe
