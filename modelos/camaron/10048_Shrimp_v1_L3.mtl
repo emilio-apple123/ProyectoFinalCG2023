@@ -1,0 +1,10 @@
+newmtl _Shrimp
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10048_Shrimp_v1.jpg
+map_Ka 10048_Shrimp_v1.jpg
+Ni 1.50
+Ks 0.49 0.49 0.49
+Ns 54.00
