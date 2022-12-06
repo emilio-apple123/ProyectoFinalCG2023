@@ -1,0 +1,50 @@
+newmtl TropicalFish03____Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish03.jpg
+map_Ka TropicalFish03.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl TropicalFish04____Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish04.jpg
+map_Ka TropicalFish04.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl TropicalFish05____Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish05.jpg
+map_Ka TropicalFish05.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl TropicalFish06____Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish06.jpg
+map_Ka TropicalFish06.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl ___Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish02.jpg
+map_Ka TropicalFish02.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00

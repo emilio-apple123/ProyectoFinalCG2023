@@ -1,16 +1,10 @@
-# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 06.01.2012 10:26:51
-
-newmtl 12957_Manatee
-	Ns 10.0000
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 1.0000 1.0000 1.0000
-	Kd 1.0000 1.0000 1.0000
-	Ks 0.0000 0.0000 0.0000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka 12957_Manatee_diff.jpg
-	map_Kd 12957_Manatee_diff.jpg
+newmtl _Manatee1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 12957_Manatee_diff.jpg
+map_Ka 12957_Manatee_diff.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00

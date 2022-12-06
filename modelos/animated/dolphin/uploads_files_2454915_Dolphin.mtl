@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:modelos/animated/dolphin/uploads_files_2454915_Dolphin.mtl
 # Blender MTL File: 'Dolphin.blend'
 # Material Count: 2
 
@@ -20,3 +21,21 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
+=======
+newmtl snail_Material1
+illum 4
+Kd 0.01 0.59 0.23
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.45
+Ks 0.50 0.50 0.50
+Ns 241.66
+newmtl snail_Snail1
+illum 4
+Kd 0.58 0.04 0.01
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.45
+Ks 0.50 0.50 0.50
+Ns 225.00
+>>>>>>> Stashed changes:modelos/caracol/snail.mtl
