@@ -1,0 +1,30 @@
+newmtl Lowpoly_Starfish_Leaves
+illum 4
+Kd 0.06 0.58 0.44
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Lowpoly_Starfish_Sand
+illum 4
+Kd 0.99 0.85 0.59
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Lowpoly_Starfish_Sand_1
+illum 4
+Kd 0.91 0.78 0.55
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Lowpoly_Starfish_Starfish
+illum 4
+Kd 0.93 0.15 0.38
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Lowpoly_Starfish_Tubes
+illum 4
+Kd 1.00 0.36 0.55
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00

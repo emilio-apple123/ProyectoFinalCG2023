@@ -1,3 +1,10 @@
+newmtl bota1_bota_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd pierna.jpg
+Ni 1.00
 newmtl bota_lambert2SG2
 illum 4
 Kd 0.00 0.00 0.00
