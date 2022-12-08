@@ -1,8 +1,8 @@
 ﻿/*---------------------------------------------------------*/
 /* ----------------  Proyecto Final   -----------*/
 /*-----------------    2023-1   ---------------------------*/
-/*------------- Alumno: Equipo 5 ------*/
-/*------------- No. Cuenta    ---------------*/
+/*------------- Alumno:  ------*/
+/*------------- No. Cuenta 315313635  ---------------*/
 #include <Windows.h>
 
 #include <glad/glad.h>
@@ -63,14 +63,18 @@ glm::vec3 lightDirection(-1.0f, -1.0f, 0.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
+
 float	movAuto_x = 0.0f,
 movAuto_z = 0.0f,
-orienta = 0.0f;
+movAuto_y = 0.0f,
+orienta = 0.0f,
+giroLlanta = 0.0f;
 bool	animacion = false,
 recorrido1 = true,
 recorrido2 = false,
 recorrido3 = false,
-recorrido4 = false;
+recorrido4 = false,
+bandera = false;
 
 
 //Keyframes (Manipulación y dibujo)
@@ -91,7 +95,8 @@ float
 variableX = 0,
 variableY = 1,
 variableZ = 1,
-MyVariable = 0.0f;
+MyVariable = 0.0f,
+jet = 0.0f;
 
 float		
 LX = 0.0,
@@ -204,13 +209,41 @@ void animate(void)
 		}
 	}
 
-	//Vehículo
+	///Vehículo
 	if (animacion)
 	{
-		movAuto_z += 3.0f;
-	}
-}
+		if (jet == 0.0f) {
+			movAuto_z -= 3.0f;
+			giroLlanta -= 3.0f;
+			if (movAuto_z <= -170.0f)
+				jet = 1.0f;
+		}
 
+		if (jet == 1.0f) {
+			movAuto_y += 3.0f;
+			if (movAuto_y >= 200.5f)
+				jet = 2.0f;
+		}
+		if (jet == 2.0f) {
+			movAuto_z += 3.0f;
+			if (movAuto_z >= 240.5f)
+				jet = 3.0f;
+		}
+
+		if (jet == 3.0f) {
+			movAuto_y -= 3.0f;
+			if (movAuto_y <= 0.0f)
+				jet = 4.0f;
+		}
+		if (jet == 4.0f) {
+			movAuto_z += 3.0f;
+			if (movAuto_z >= 540.5f)
+				jet = 5.0f;
+		}
+
+	}
+
+}
 void getResolution()
 {
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -294,6 +327,17 @@ int main()
 	// load models
 	// -----------
 	Model piso("resources/objects/piso/piso.obj");
+	Model arbol("resources/objects/piso/piso.obj");
+	Model manati("resources/objects/manati/12957_Manatee_v1_l3.obj");
+	Model tortuga("resources/objects/tortuga/10042_Sea_Turtle_V2_iterations-2.obj");
+	Model tiburon1("resources/objects/tiburones/2/Shark_v2.obj");
+	Model tiburon2("resources/objects/tiburones/3/Bambooshark.obj");
+	Model pinguino("resources/objects/pinguino/PenguinBaseMesh.obj");
+	Model morsa("resources/objects/morsa/10053_Walrus_v1_L3.obj");
+	Model ballena("resources/objects/ballena/10054_Whale_v2_L3.obj");
+	Model bashfish("resources/objects/bassfish/bass.obj");
+	Model cangrejo("resources/objects/cangrejo/10012_crab_v2_iterations-1.obj");
+	Model camaron("resources/objects/camaron/10048_Shrimp_v1_L3.obj");
 	Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -303,15 +347,22 @@ int main()
 	Model cabeza("resources/objects/Personaje/cabeza.obj");
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
-	Model casaVieja("resources/objects/casa/OldHouse.obj");
+	//Model casaVieja("resources/objects/casa/OldHouse.obj");
 	//Model cubo("resources/objects/cubo/cube02.obj");
-	Model casaDoll("resources/objects/casa/DollHouse.obj");
+	//Model casaDoll("resources/objects/casa/DollHouse.obj");
+	//Model banca("resources/objects/banca/Wooden Bench Weathered 2.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
-	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	//ninja.initShaders(animShader.ID);
+	ModelAnim praying("resources/objects/praying/Praying.dae");
+	praying.initShaders(animShader.ID);
+
+	ModelAnim acariciar("resources/objects/acariciar/PettingAnimal.dae");
+	acariciar.initShaders(animShader.ID);
+
+	ModelAnim zombie("resources/objects/zombie/ZombieBiting.dae");
+	zombie.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -429,7 +480,19 @@ int main()
 		model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//ninja.Draw(animShader);
+		praying.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-140.3f, 1.75f, 200.3f)); // translate it down so it's at the center of the scene
+		model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		animShader.setMat4("model", model);
+		acariciar.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(240.3f, 1.75f, 100.3f)); // translate it down so it's at the center of the scene
+		model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		animShader.setMat4("model", model);
+		zombie.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -442,46 +505,142 @@ int main()
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		//casaDoll.Draw(staticShader);
+			
+		
+		//Tiburones
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		tiburon1.Draw(staticShader);
 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, 1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		tiburon2.Draw(staticShader);
+		
+		//Pinguino
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, 50.75f, 50.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		pinguino.Draw(staticShader);
+
+		//Morsa
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, 150.75f, 50.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		morsa.Draw(staticShader);
+
+		//Cangrejo
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, 1.75f, 50.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		cangrejo.Draw(staticShader);
+
+		//Camaron
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, 1.75f, 150.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		camaron.Draw(staticShader);
+		
+		//Ballena
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, 1.75f, 250.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		ballena.Draw(staticShader);
+
+		//Bassfish
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-100.0f, 1.75f, 250.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
+		staticShader.setMat4("model", model);
+		bashfish.Draw(staticShader);
+
+		//Piso
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
+        
+		//Manati
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 14.7f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		manati.Draw(staticShader);
+
+		//Tortugas
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(40.0f, 5.7f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		tortuga.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(55.0f, 5.7f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		tortuga.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(70.0f, 5.7f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		tortuga.Draw(staticShader);
+
+		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::scale(model, glm::vec3(25.0f));
 		staticShader.setMat4("model", model);
-		//casaVieja.Draw(staticShader);
+		//banca.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
+		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, movAuto_y, movAuto_z));//manipulacion de objeto en el escenario
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		//carro.Draw(staticShader);
 
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
+		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		//llanta.Draw(staticShader);	//Izq delantera
 
 		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, 12.9f));
+		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		//llanta.Draw(staticShader);	//Der delantera
 
 		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, -14.5f));
+		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		//llanta.Draw(staticShader);	//Der trasera
 
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, -14.5f));
+		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		//llanta.Draw(staticShader);	//Izq trase
@@ -612,12 +771,19 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		lightPosition.x++;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
 		lightPosition.x--;
-	
+	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		movAuto_z = 0.0f;
 
 	//Car animation
+	//cambia el valor de la variable que mueve el carro
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
-		animacion ^= true;
+	{
+		animacion = true;
+		jet = 0.0f;
+		//animacion ^= true;
 
+
+	}
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
 	{
