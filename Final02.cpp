@@ -179,7 +179,7 @@ typedef struct _frame
 }FRAME;
 
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 0;			//introducir datos
+int FrameIndex = 6;			//introducir datos
 bool play = false;
 int playIndex = 0;
 
@@ -828,13 +828,36 @@ int main()
 	
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
-	{
+	/*{
 		KeyFrame[i].posX = 0;
 		KeyFrame[i].posY = 0;
 		KeyFrame[i].posZ = 0;
 		KeyFrame[i].rotRodIzq = 0;
 		KeyFrame[i].giroMonito = 0;
-	}
+	}*/
+		KeyFrame[0].posX = 0.0;
+		KeyFrame[0].posY = 150.0;
+		KeyFrame[0].posZ = 0.0;
+
+		KeyFrame[1].posX = 30.0;
+		KeyFrame[1].posY = 160.0;
+		KeyFrame[1].posZ = 20.0;
+
+		KeyFrame[2].posX = 45.0;
+		KeyFrame[2].posY = 170.0;
+		KeyFrame[2].posZ = -20.0;
+		
+		KeyFrame[3].posX = -50.0;
+		KeyFrame[3].posY = 180.0;
+		KeyFrame[3].posZ = 50.0;
+
+		KeyFrame[4].posX = 30.0;
+		KeyFrame[4].posY = 190.0;
+		KeyFrame[4].posZ = -10.0;
+
+		KeyFrame[5].posX = 70.0;
+		KeyFrame[5].posY = 200.0;
+		KeyFrame[5].posZ = 0.0;
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -1524,7 +1547,14 @@ int main()
 		model = glm::scale(model, glm::vec3(0.2f));
 		staticShader.setMat4("model", model);
 		roca.Draw(staticShader);
-
+		
+		//Globo
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::scale(model, glm::vec3(20.0f));
+		staticShader.setMat4("model", model);
+		globo.Draw(staticShader);
+		
 		//Camaron
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(25.0f, 15.75f, 340.0f));
@@ -1785,7 +1815,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 
 	}
 	//To play KeyFrame animation 
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+	if (key == GLFW_KEY_9 && action == GLFW_PRESS)
 	{
 		if (play == false && (FrameIndex > 1))
 		{
