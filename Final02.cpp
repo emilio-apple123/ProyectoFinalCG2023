@@ -172,7 +172,7 @@ typedef struct _frame
 }FRAME;
 
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 6;			//introducir datos
+int FrameIndex = 11;			//introducir datos
 bool play = false;
 int playIndex = 0;
 
@@ -828,9 +828,29 @@ int main()
 		KeyFrame[4].posZ = -10.0;
 
 		KeyFrame[5].posX = 70.0;
-		KeyFrame[5].posY = 200.0;
+		KeyFrame[5].posY = 250.0;
 		KeyFrame[5].posZ = 0.0;
 
+		KeyFrame[6].posX = 90.0;
+		KeyFrame[6].posY = 350.0;
+		KeyFrame[6].posZ = 0.0;
+		
+		KeyFrame[7].posX = 70.0;
+		KeyFrame[7].posY = 450.0;
+		KeyFrame[7].posZ = 0.0;
+
+		KeyFrame[8].posX = 40.0;
+		KeyFrame[8].posY = 500.0;
+		KeyFrame[8].posZ = 0.0;
+
+		KeyFrame[9].posX = 70.0;
+		KeyFrame[9].posY = 600.0;
+		KeyFrame[9].posZ = 30.0;
+
+
+		KeyFrame[10].posX = 100.0;
+		KeyFrame[10].posY = 700.0;
+		KeyFrame[10].posZ = 60.0;
 	//}
 
 	// draw in wireframe
@@ -1539,10 +1559,41 @@ int main()
 
 		//Globo
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::scale(model, glm::vec3(20.0f));
+		model = glm::translate(model, glm::vec3(-30 + posX, 30 + posY, posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(posX, 40+posY, posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		globo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(30 + posX, 37 + posY, posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		globo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(60 + posX, 32 + posY, posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		globo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(90 + posX, 37 + posY, posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		globo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(120 + posX, 30 + posY, posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		globo.Draw(staticShader);
+
 
 		//Camaron
 		model = glm::mat4(1.0f);
