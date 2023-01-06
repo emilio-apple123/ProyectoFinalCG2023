@@ -135,7 +135,8 @@ recorrido35 = false;
 
 
 //Keyframes (Manipulación y dibujo)
-float	posX = 0.0f,
+float	
+posX = 0.0f,
 posY = 0.0f,
 posZ = 0.0f;
 
@@ -780,6 +781,7 @@ int main()
 
 	//Globo
 	Model globo("resources/objects/globo/globo/globo.obj");
+	Model globoacuario("resources/objects/globosacu/globosacu.obj");
 
 	Model hielo1("resources/objects/hielo/EstructuraDePoligonos.obj");
 	Model hielo2("resources/objects/hielo/bloquesdehielo.obj");
@@ -792,8 +794,9 @@ int main()
 	Model fuente("resources/objects/Fuente/f1.obj");
 	Model hellow("resources/objects/Bote/bin.obj");
 	Model hotel("resources/objects/hotel/Hotel Hilton Atlanta-obj.obj");
-	Model work("resources/objects/work/workermanOBJ.obj");
-	Model persona("resources/objects/persona/Frank.obj");
+	Model mujer("resources/objects/mujer/mujer.obj");
+	Model hombre("resources/objects/hombre/hombre.obj");
+	Model viejo("resources/objects/viejo/muro.obj");
 
 		
 	ModelAnim sit("resources/objects/sit/Sitting Laughing.dae");
@@ -815,20 +818,20 @@ int main()
 	//for (int i = 0; i < MAX_FRAMES; i++)
 	//{
 		KeyFrame[0].posX = 0.0;
-		KeyFrame[0].posY = 150.0;
+		KeyFrame[0].posY = 50.0;
 		KeyFrame[0].posZ = 0.0;
 
 		KeyFrame[1].posX = 30.0;
-		KeyFrame[1].posY = 160.0;
+		KeyFrame[1].posY = 80.0;
 		KeyFrame[1].posZ = 20.0;
 
 		KeyFrame[2].posX = 45.0;
-		KeyFrame[2].posY = 170.0;
-		KeyFrame[2].posZ = -20.0;
+		KeyFrame[2].posY = 130.0;
+		KeyFrame[2].posZ = 0.0;
 		
 		KeyFrame[3].posX = -50.0;
 		KeyFrame[3].posY = 180.0;
-		KeyFrame[3].posZ = 50.0;
+		KeyFrame[3].posZ = 30.0;
 
 		KeyFrame[4].posX = 30.0;
 		KeyFrame[4].posY = 190.0;
@@ -1129,19 +1132,6 @@ int main()
 		staticShader.setMat4("model", model);
 		ballenaaletas.Draw(staticShader);
 		
-		//Work
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-200.0f, 90.75f, -250.0f));
-		model = glm::scale(model, glm::vec3(12.0f));
-		staticShader.setMat4("model", model);
-		//work.Draw(staticShader);
-
-		//Persona
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-200.0f, 60.75f, -250.0f));
-		model = glm::scale(model, glm::vec3(12.0f));
-		staticShader.setMat4("model", model);
-		//persona.Draw(staticShader);
 
 		//Tiburones
 		model = glm::mat4(1.0f);
@@ -1222,13 +1212,6 @@ int main()
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		estructura.Draw(staticShader);
-		
-		//Letras
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-40.0f, -0.75f, 430.0f));
-		model = glm::scale(model, glm::vec3(10.0f));
-		staticShader.setMat4("model", model);
-		letras.Draw(staticShader);
 		
 		//Piso
 		model = glm::mat4(1.0f);
@@ -1547,40 +1530,113 @@ int main()
 		model = glm::scale(model, glm::vec3(0.2f));
 		staticShader.setMat4("model", model);
 		roca.Draw(staticShader);
+		
+		//Mujer
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-140.0f, -0.75f, 530.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(200.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		mujer.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, -0.75f, 520.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(170.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		mujer.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, -0.75f, 530.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		mujer.Draw(staticShader);
+		
+		//Viejo
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(70.0f, -0.75f, 530.0f));
+		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::rotate(model, glm::radians(190.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		viejo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-90.0f, -0.75f, 530.0f));
+		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::rotate(model, glm::radians(170.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		viejo.Draw(staticShader);
+
+		//Hombre
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(140.0f, -0.75f, 530.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		hombre.Draw(staticShader);
+		
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(40.0f, -0.75f, 520.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(200.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		hombre.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-40.0f, -0.75f, 530.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(160.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		hombre.Draw(staticShader);
+
+		//Letras
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-40.0f, -0.75f, 430.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		letras.Draw(staticShader);
+
+		//Globo Acuario 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(30 + posX, 30 + posY, 480 + posZ));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		globoacuario.Draw(staticShader);
 
 		//Globo
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-30 + posX, 30 + posY, posZ));
+		model = glm::translate(model, glm::vec3(-30 + posX, 30 + posY, 480+posZ));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(posX, 40+posY, posZ));
+		model = glm::translate(model, glm::vec3(posX, 40+posY, 480+posZ));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(30 + posX, 37 + posY, posZ));
+		model = glm::translate(model, glm::vec3(30 + posX, 37 + posY, 480 + posZ));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(60 + posX, 32 + posY, posZ));
+		model = glm::translate(model, glm::vec3(60 + posX, 32 + posY, 480 + posZ));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(90 + posX, 37 + posY, posZ));
+		model = glm::translate(model, glm::vec3(90 + posX, 37 + posY, 480 + posZ));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(120 + posX, 30 + posY, posZ));
+		model = glm::translate(model, glm::vec3(120 + posX, 30 + posY, 480 + posZ));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
