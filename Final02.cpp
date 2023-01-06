@@ -435,6 +435,7 @@ void animate(void)
 			
 			movAuto_x = -600.0f;
 			movAuto_z += 4.5f;
+			giroLlanta += 3.0f;
 			orienta = 0.0f;
 			if (movAuto_z >= 430.0f)
 			{
@@ -446,6 +447,7 @@ void animate(void)
 		{
 			movAuto_x += 0.3f;
 			movAuto_z = 430.0f;
+			giroLlanta -= 3.0f;
 			orienta = -90.0f;
 			if (movAuto_x >= -530.0f)
 			{
@@ -458,6 +460,7 @@ void animate(void)
 		{
 			movAuto_x = -530.0f;
 			movAuto_z -= 0.3f;
+			giroLlanta += 3.0f;
 			orienta = 180.0f;
 
 			if (movAuto_z <= 400.0f)
@@ -471,6 +474,7 @@ void animate(void)
 		{
 			movAuto_x = -530.0f;
 			movAuto_z += 0.3f;
+			giroLlanta -= 3.0f;
 
 			if (movAuto_z >= 555.0f)
 			{
@@ -762,7 +766,7 @@ int main()
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
 	Model piso2("resources/objects/piso2/Piso2.obj");
-	Model estructura("resources/objects/estructura/estructura/estructura.obj");
+	Model estructura("resources/objects/estructura/estructura.obj");
 	Model letras("resources/objects/amg/LetrasAcuario.obj");
 	Model bob("resources/objects/bob/bob.obj");
 	Model banca("resources/objects/banca/banca.obj");
@@ -775,7 +779,7 @@ int main()
 	Model gaviota4("resources/objects/gaviota/gaviota/puntaALA.obj");
 
 	//Globo
-	Model globo("resources/objects/globo/globo.obj");
+	Model globo("resources/objects/globo/globo/globo.obj");
 
 	Model hielo1("resources/objects/hielo/EstructuraDePoligonos.obj");
 	Model hielo2("resources/objects/hielo/bloquesdehielo.obj");
@@ -787,22 +791,25 @@ int main()
 	Model pino("resources/objects/arboles/pino/por_tree.obj");
 	Model fuente("resources/objects/Fuente/f1.obj");
 	Model hellow("resources/objects/Bote/bin.obj");
-	//Model banca("resources/objects/banca/Wooden Bench Weathered 2.obj");
+	Model hotel("resources/objects/hotel/Hotel Hilton Atlanta-obj.obj");
+	Model work("resources/objects/work/workermanOBJ.obj");
+	Model persona("resources/objects/persona/Frank.obj");
+
+		
+	ModelAnim sit("resources/objects/sit/Sitting Laughing.dae");
+	sit.initShaders(animShader.ID);
 	
-	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	//animacionPersonaje.initShaders(animShader.ID);
-	
-	//ModelAnim praying("resources/objects/praying/Praying.dae");
-	//praying.initShaders(animShader.ID);
+	ModelAnim praying("resources/objects/praying/Praying.dae");
+	praying.initShaders(animShader.ID);
 
-	//ModelAnim acariciar("resources/objects/acariciar/PettingAnimal.dae");
-	//acariciar.initShaders(animShader.ID);
+	ModelAnim acariciar("resources/objects/acariciar/PettingAnimal.dae");
+	acariciar.initShaders(animShader.ID);
 
-	//ModelAnim zombie("resources/objects/zombie/ZombieBiting.dae");
-	//zombie.initShaders(animShader.ID);
+	ModelAnim zombie("resources/objects/zombie/ZombieBiting.dae");
+	zombie.initShaders(animShader.ID);
 
-	//ModelAnim cmn("resources/objects/cmn/Taunt.dae");
-	//cmn.initShaders(animShader.ID);
+	ModelAnim cmn("resources/objects/cmn/Taunt.dae");
+	cmn.initShaders(animShader.ID);
 	
 	//Inicialización de KeyFrames
 	//for (int i = 0; i < MAX_FRAMES; i++)
@@ -955,30 +962,35 @@ int main()
 		// Segundo Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 		
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-525.0f, -0.75f, -350.0f)); // translate it down so it's at the center of the scene
+		model = glm::scale(model, glm::vec3(0.19f));	// it's a bit too big for our scene, so scale it down
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		animShader.setMat4("model", model);
+		sit.Draw(animShader);
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-140.0f, 17.75f, -250.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.19f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//praying.Draw(animShader);
+		praying.Draw(animShader);
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(88.0f, 30.75f, 115.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.19f));// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//acariciar.Draw(animShader);
+		acariciar.Draw(animShader);
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-550.0f, 1.75f, -550.f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.19f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//zombie.Draw(animShader);
+		zombie.Draw(animShader);
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-117.5f, 17.75f, 390.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.175f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//cmn.Draw(animShader);
+		cmn.Draw(animShader);
 		
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -1116,6 +1128,20 @@ int main()
 		model = glm::rotate(model, glm::radians(variableXT), glm::vec3(0.8f, 0.0f, 0.8f));
 		staticShader.setMat4("model", model);
 		ballenaaletas.Draw(staticShader);
+		
+		//Work
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0f, 90.75f, -250.0f));
+		model = glm::scale(model, glm::vec3(12.0f));
+		staticShader.setMat4("model", model);
+		//work.Draw(staticShader);
+
+		//Persona
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0f, 60.75f, -250.0f));
+		model = glm::scale(model, glm::vec3(12.0f));
+		staticShader.setMat4("model", model);
+		//persona.Draw(staticShader);
 
 		//Tiburones
 		model = glm::mat4(1.0f);
@@ -1297,54 +1323,19 @@ int main()
 		model = glm::scale(model, glm::vec3(17.0f));
 		staticShader.setMat4("model", model);
 		palmera.Draw(staticShader);
-
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(550.0f, -0.75f, -550.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
 		
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(580.0f, -0.75f, -570.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
-
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(570.0f, -0.75f, -570.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
-
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(590.0f, -0.75f, -580.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
-
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(590.0f, -0.75f, -590.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
-
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(580.0f, -0.75f, -560.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
-
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(570.0f, -0.75f, -560.0f));
-		model = glm::scale(model, glm::vec3(17.0f));
-		staticShader.setMat4("model", model);
-		palmera.Draw(staticShader);
-
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(600.0f, -0.75f, -600.0f));
 		model = glm::scale(model, glm::vec3(17.0f));
 		staticShader.setMat4("model", model);
 		palmera.Draw(staticShader);
+
+		//Hotel
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0, -0.75, -500));
+		model = glm::scale(model, glm::vec3(65.0f));
+		staticShader.setMat4("model", model);
+		hotel.Draw(staticShader);
 
 		//Pino
 		model = glm::mat4(1.0f);
@@ -1593,7 +1584,6 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
-
 
 		//Camaron
 		model = glm::mat4(1.0f);
@@ -1856,6 +1846,12 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	if (key == GLFW_KEY_7 && action == GLFW_PRESS)
 	{
 		PlaySound(L"resources/sounds/metc.wav", NULL, SND_FILENAME | SND_ASYNC);
+
+	}
+
+	if (key == GLFW_KEY_9 && action == GLFW_PRESS)
+	{
+		PlaySound(L"resources/sounds/ES_Human Crowd Studio 10 - SFX Producer.wav", NULL, SND_FILENAME | SND_ASYNC);
 
 	}
 	//To play KeyFrame animation 
