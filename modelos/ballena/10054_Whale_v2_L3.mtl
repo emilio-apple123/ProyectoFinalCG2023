@@ -1,4 +1,11 @@
-newmtl _Whale_v3
+newmtl Bambooshark_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 1.jpg
+Ni 1.00
+newmtl _Whale_v2_L3__Whale_v3
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
