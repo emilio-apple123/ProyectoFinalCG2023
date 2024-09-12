@@ -1,0 +1,19 @@
+newmtl Lowpoly_Starfish_Starfish
+illum 4
+Kd 0.93 0.15 0.38
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Lowpoly_Starfish_Tubes
+illum 4
+Kd 1.00 0.36 0.55
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert16SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rosa.png
+Ni 1.00

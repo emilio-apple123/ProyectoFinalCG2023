@@ -1,0 +1,20 @@
+newmtl TropicalFish10____Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish10.jpg
+map_Ka TropicalFish10.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl TropicalFish11____Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd TropicalFish11.jpg
+map_Ka TropicalFish11.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
